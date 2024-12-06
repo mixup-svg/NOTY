@@ -1,0 +1,149 @@
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 2.4rem;
+  font-family: "Inter", sans-serif;
+  background-color: #061225;
+}
+.logo-input {
+  width: 40%;
+}
+
+/* Logo Section */
+.logo-text {
+  font-size: 2.8rem;
+  margin-top: 1rem;
+  font-weight: 900;
+}
+
+/* Login Section */
+.main-login {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13.8rem;
+  margin: 0 2.8rem;
+}
+
+.heading {
+  color: #fff;
+  font-weight: 600;
+  font-size: 3.2rem;
+  margin-top: 0.8rem;
+}
+
+.heading-text {
+  color: #b5bbc6;
+  font-size: 1.2rem;
+  /* margin: 0 3.8rem 2.4rem 0; */
+  font-weight: 400;
+}
+
+.gradient,
+.logo-text {
+  background: linear-gradient(to right, #509dfd, #7642fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Input Fields */
+.name-input,
+.password-input {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.input-box {
+  padding: 1.1rem;
+  margin-top: 0.8rem;
+  background-color: #162234;
+  border: none;
+  border-radius: 0.8rem;
+  color: #fff;
+}
+
+.input-box:focus {
+  border: 2px solid #509dfd;
+  outline: none;
+}
+
+/* Password Field */
+.pass-icon {
+  display: flex;
+  align-items: center;
+}
+
+.input--pass {
+  flex-grow: 1;
+  padding-right: 2.8rem;
+}
+
+.eye-icon {
+  position: absolute;
+  cursor: pointer;
+  top: 1.8rem;
+  right: 1rem;
+}
+
+.eye-icon:hover {
+  color: #509dfd;
+}
+
+/* Checkbox */
+.check-box-text {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.check-box {
+  margin-left: 0.8rem;
+}
+
+/* Button */
+.btn-login {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1.2rem 6.4rem;
+  margin: 0.8rem;
+  border: none;
+  border-radius: 0.2rem;
+  background: linear-gradient(to right, #509dfd, #7642fe);
+  transition: all 0.3s;
+}
+
+.btn-login:hover,
+.btn-login:active {
+  color: #000;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.btn-login:focus {
+  outline: 2px solid #509dfd;
+  box-shadow: 0 0 5px #7642fe;
+}
+
+/* Forgot Password */
+.forgot-password a {
+  color: #509dfd;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Image Section */
+.main-img {
+  display: flex;
+  justify-content: right;
+  margin-top: 1.8rem;
+  width: 500px;
+  height: 700px;
+}

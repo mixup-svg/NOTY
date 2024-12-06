@@ -1,0 +1,255 @@
+/* Global Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Layout */
+body {
+  font-size: 42px;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 80px;
+}
+.nav-hidden .notes-body {
+  margin-left: 0;
+}
+.nav-aside {
+  font-family: fangsong;
+  text-align: center;
+  grid-column: 2/-3;
+  grid-row: 1/3;
+  height: 100vh;
+  background-color: aliceblue;
+  padding: 11px;
+}
+.add-notes {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 300px;
+  background-color: #b1aaff;
+  color: white;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+.aside-add-icon {
+  display: flex;
+  justify-content: center;
+}
+.main-pages {
+  margin: 50px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+}
+.nav-pages {
+  display: flex;
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 300px;
+  transition: all 0.2s;
+}
+.nav-pages:hover {
+  background-color: #2600ff50;
+  color: white;
+}
+.pages-icon {
+  margin-right: 10px;
+}
+/* Header */
+.main-header {
+  display: block;
+  position: relative;
+  width: 100%;
+  background-color: #f3f2f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 22px;
+  padding: 11px;
+}
+.menu-open-icon {
+  display: none;
+}
+.menu-icon {
+  display: flex;
+  cursor: pointer;
+  margin-left: -15px;
+  padding: 5px;
+  font-size: 32px;
+  border-radius: 50%;
+}
+.menu-icon:hover {
+  background-color: #2600ff50;
+  color: white;
+}
+.search-bar {
+  display: block;
+  position: relative;
+  width: 25%;
+}
+.search-text {
+  border-radius: 25px;
+  padding: 10px;
+  width: 100%;
+}
+.search-icon {
+  position: absolute;
+  font-size: 20px;
+  top: 9px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.header-sub-logo {
+  border-radius: 50%;
+  padding: 5px;
+}
+.header-sub-logo:hover {
+  background-color: #2600ff50;
+  color: white;
+}
+.profile-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.img-profile {
+  border-radius: 50%;
+  height: 35px;
+}
+.text {
+  color: #222323;
+  font-size: 20px;
+}
+/* Main Content */
+.notes-body {
+  display: block;
+  position: relative;
+}
+.note-title {
+  word-wrap: break-word;
+  white-space: normal;
+  overflow: visible;
+  display: block;
+  text-align: start;
+}
+.note--description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: box;
+  line-clamp: 3;
+  box-orient: vertical;
+  white-space: normal;
+  text-align: left;
+}
+.top-body {
+  padding: 15px;
+}
+.top-text {
+  font-size: 18px;
+  color: #8f9091;
+}
+.top-heading {
+  font-size: 38px;
+}
+.notes-class {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 300px);
+  gap: 25px;
+  max-width: 1200px;
+  padding: 20px;
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 15px;
+  justify-content: flex-start;
+  border: 1px solid black;
+  border: none;
+  text-align: center;
+  transition: all 0.3s;
+}
+.page:hover {
+  box-shadow: 0px 20px 15px #00000046;
+}
+/* Footer */
+.main-btn {
+  display: flex;
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  color: #f3f2f9;
+  background-color: #b1aaff;
+  font-size: 28px;
+  padding: 12px;
+  border: none;
+  border-radius: 200px;
+  cursor: pointer;
+}
+/* Popup */
+.main-pop-up {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.pop-up {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 65%;
+  height: 80%;
+}
+.popup-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.popup-content input,
+.popup-content textarea {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#note-description {
+  align-items: start;
+  text-align: left;
+  margin-left: 0;
+  height: 30vh;
+}
+.submit-note {
+  width: 100%;
+  padding: 15px;
+  background-color: #b1aaff;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-weight: 900;
+}
+.submit-note:hover {
+  background-color: #9991fa;
+}
+.hidden {
+  display: none;
+}

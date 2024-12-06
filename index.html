@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./CSS/login.css" />
+    <link rel="stylesheet" href="./CSS/loginquery.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="../NOTY-notpad-main-page/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg"
+    ></script>
+    <title>📝NOTY Login📝</title>
+  </head>
+  <body>
+    <div class="login">
+      <div class="main-login">
+        <div class="logo-input">
+          <div class="logo-text">NOTY</div>
+          <div class="text-input">
+            <div class="main-heading">
+              <h1 class="heading">
+                Enter Your <span class="gradient">Email</span> &
+                <span class="gradient">Password</span>
+              </h1>
+              <p class="heading-text">
+                Welcome back! Please enter your credentials to access your
+                account and manage your services.
+              </p>
+            </div>
+
+            <div class="login-section">
+              <div class="name-input">
+                <label for="name">Name</label>
+                <input id="name" class="input-box" type="text" />
+              </div>
+              <div class="password-input">
+                <label for="password">Password</label>
+
+                <div class="pass-icon">
+                  <input
+                    id="password"
+                    class="input-box input--pass"
+                    type="password"
+                    aria-label="Enter your password"
+                  />
+                  <ion-icon class="eye-icon" name="eye-outline"></ion-icon>
+                </div>
+              </div>
+              <div class="checkbox">
+                <input
+                  class="check-box"
+                  type="checkbox"
+                  name="myCheckbox"
+                  id="stayLoggedIn"
+                />
+                <label class="check-box-text" for="stayLoggedIn">
+                  Stay logged in
+                </label>
+              </div>
+              <div class="btn">
+                <button class="btn-login" aria-label="Log in to your account">
+                  Login
+                </button>
+              </div>
+              <div class="forgot-password">
+                <a href="#">Forgot Password?</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main-img">
+          <img
+            src="./assets/img.jpg"
+            alt="A programmer working at a desk"
+            class="image-side"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Focus on the name input field when the page loads
+      window.onload = function () {
+        document.getElementById("name").focus();
+      };
+    </script>
+    <script src="login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>📝NOTY📝</title>
+    <link rel="stylesheet" href="main.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <!-- HTML Structure (similar to the previous example) -->
+    <header class="main-header">
+      <div class="menu-icon">
+        <ion-icon
+          name="chevron-forward-outline"
+          class="menu-open-icon"
+        ></ion-icon>
+        <ion-icon
+          name="chevron-back-outline"
+          class="menu-close-icon"
+        ></ion-icon>
+      </div>
+      <div class="search-bar">
+        <input
+          class="search-text"
+          type="text"
+          name="search"
+          placeholder="Search"
+        />
+        <span>
+          <button class="search-icon">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </span>
+      </div>
+      <div class="profile-text">
+        <div class="header-logo">
+          <a href="#"
+            ><ion-icon class="header-sub-logo" name="cart-outline"></ion-icon
+          ></a>
+          <a href="#"
+            ><ion-icon
+              class="header-sub-logo"
+              name="mail-open-outline"
+            ></ion-icon
+          ></a>
+          <a href="#"
+            ><ion-icon
+              class="header-sub-logo"
+              name="notifications-outline"
+            ></ion-icon
+          ></a>
+        </div>
+        <img
+          class="img-profile"
+          src="/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg"
+          alt="profile"
+        />
+        <span class="text"><p>Hi, Jenny</p></span>
+      </div>
+    </header>
+
+    <aside class="nav-aside">
+      <p>NOTY</p>
+      <div>
+        <button class="add-notes">
+          <span>
+            <ion-icon class="pages-icon" name="book-outline"></ion-icon>Add
+            Notes
+          </span>
+        </button>
+      </div>
+      <div class="main-pages">
+        <a class="nav-pages" href="#"
+          ><ion-icon class="pages-icon" name="home-outline"></ion-icon>Home</a
+        >
+        <a class="nav-pages" href="#"
+          ><ion-icon class="pages-icon" name="star-outline"></ion-icon
+          >Shortcuts</a
+        >
+        <a class="nav-pages" href="#"
+          ><ion-icon class="pages-icon" name="star-outline"></ion-icon>Notes</a
+        >
+        <a class="nav-pages" href="#"
+          ><ion-icon
+            class="pages-icon"
+            name="checkmark-done-circle-outline"
+          ></ion-icon
+          >Tasks</a
+        >
+        <a class="nav-pages" href="#"
+          ><ion-icon class="pages-icon" name="calendar-outline"></ion-icon
+          >Calendar</a
+        >
+        <a class="nav-pages" href="#"
+          ><ion-icon class="pages-icon" name="book-outline"></ion-icon
+          >Notebooks</a
+        >
+        <a class="nav-pages" href="#"
+          ><ion-icon class="pages-icon" name="pricetag-outline"></ion-icon
+          >Tags</a
+        >
+        <a class="nav-pages" href="#"
+          ><ion-icon class="pages-icon" name="trash-outline"></ion-icon>Trash</a
+        >
+      </div>
+    </aside>
+
+    <main>
+      <div class="notes-body">
+        <div class="top-body">
+          <h1 class="top-heading">Jenny's Home</h1>
+          <p class="top-text">Ready to start taking notes?</p>
+        </div>
+        <div class="notes-class">
+          <!-- Notes will be added here dynamically -->
+        </div>
+      </div>
+    </main>
+    <div class="main-btn-body">
+      <button class="main-btn">
+        <ion-icon name="add-outline"></ion-icon>
+      </button>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
