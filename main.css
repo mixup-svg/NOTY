@@ -58,6 +58,17 @@ body {
   background-color: #2600ff50;
   color: white;
 }
+.logout-btn {
+  display: flex;
+  border: none;
+  background-color: #f0f8ff;
+  justify-content: center;
+}
+.logout-btn:hover,
+.logout-btn:active {
+  background-color: red;
+  font-weight: 900;
+}
 .pages-icon {
   margin-right: 10px;
 }

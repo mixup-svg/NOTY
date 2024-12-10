@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const openIcon = document.querySelector(".menu-open-icon");
   const closeIcon = document.querySelector(".menu-close-icon");
   const header = document.querySelector(".main-header");
+  const logOut = document.querySelector(".logout-btn");
   const body = document.body;
   let editingNote = null;
 
@@ -189,6 +190,13 @@ document.addEventListener("DOMContentLoaded", () => {
       note.style.width = `${note.offsetWidth}px`; // Set fixed width based on current width
     });
   };
+  logOut.addEventListener("click", function () {
+    localStorage.removeItem(`authToken`);
+    sessionStorage.clear();
+    document.cookie =
+      "authToken =; expires = Thu,01 Jan 1970 00:00:00 UTC; path=/";
+    window.location.href = "index.html";
+  });
 
   // Create a new MutationObserver instance
   const observer = new MutationObserver((mutationsList, observer) => {
