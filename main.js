@@ -1,5 +1,24 @@
 "use strict";
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Authentication Check
+  const checkUserAuthentication = () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    // const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    if (!isLoggedIn) {
+      // Redirect to login page if the user is not logged in
+      window.location.href = "index.html";
+      return; // Stop further script execution
+    }
+
+    // console.log(`Welcome, ${loggedInUser.username}!`); // Optional: Log user info
+  };
+
+  // Run the authentication check
+  checkUserAuthentication();
+
+  // Notes Functionality
   const popupTemplate = `
     <div class="main-pop-up">
       <div class="pop-up">
@@ -191,31 +210,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
   logOut.addEventListener("click", function () {
-    localStorage.removeItem(`authToken`);
-    sessionStorage.clear();
-    document.cookie =
-      "authToken =; expires = Thu,01 Jan 1970 00:00:00 UTC; path=/";
+    console.log("bkucydbaskjdb");
+    localStorage.clear();
+
     window.location.href = "index.html";
   });
-
-  // Create a new MutationObserver instance
-  const observer = new MutationObserver((mutationsList, observer) => {
-    // Loop through all mutations
-    for (let mutation of mutationsList) {
-      if (mutation.type === "childList" || mutation.type === "subtree") {
-        console.log("DOM modified");
-      }
-    }
-  });
-
-  // Define the configuration of the observer
-  const config = { childList: true, subtree: true };
-
-  // Start observing the body element
-  observer.observe(document.body, config);
-
-  // Optionally, disconnect the observer when no longer needed
-
   // Load notes from localStorage when the page loads
   loadNotes();
 });
