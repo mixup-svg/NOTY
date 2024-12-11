@@ -1,23 +1,22 @@
 "use strict";
-
 document.addEventListener("DOMContentLoaded", () => {
-  // Authentication Check
+  document.body.style.display = "grid";
   const checkUserAuthentication = () => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
-    // const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-    if (!isLoggedIn) {
-      // Redirect to login page if the user is not logged in
+    const path = window.location.pathname;
+    const isLoginPage = path === "/" || path.includes("main.html");
+
+    console.log("is logged in", isLoggedIn);
+    console.log("current path", path);
+    if (!isLoggedIn && isLoginPage) {
+      console.log("redirecting logged-in user from login page ...");
       window.location.href = "index.html";
-      return; // Stop further script execution
     }
-
-    // console.log(`Welcome, ${loggedInUser.username}!`); // Optional: Log user info
   };
 
-  // Run the authentication check
+  // Run authentication checks
   checkUserAuthentication();
-
   // Notes Functionality
   const popupTemplate = `
     <div class="main-pop-up">
@@ -49,6 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeIcon = document.querySelector(".menu-close-icon");
   const header = document.querySelector(".main-header");
   const logOut = document.querySelector(".logout-btn");
+  const searchInput = document.querySelector(".search-text");
+  const notes = document.querySelectorAll(".page");
   const body = document.body;
   let editingNote = null;
 
@@ -178,6 +179,27 @@ document.addEventListener("DOMContentLoaded", () => {
         true // Show delete button in editing mode
       );
       editingNote = button;
+    });
+  });
+
+  // Search Functionality
+
+  searchInput.addEventListener("input", (event) => {
+    console.log("search Query", event.target.value);
+    const query = event.target.value.toLowerCase();
+    const notes = notesContainer.querySelectorAll(".show-notes");
+
+    notes.forEach((note) => {
+      const title = note.querySelector(".note-title").textContent.toLowerCase();
+      const description = note
+        .querySelector(".note--description")
+        .textContent.toLowerCase();
+
+      if (title.includes(query) || description.includes(query)) {
+        note.style.display = "";
+      } else {
+        note.style.display = "none";
+      }
     });
   });
 
