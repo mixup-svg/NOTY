@@ -16,6 +16,7 @@ document.querySelector(".btn-login").addEventListener("click", function () {
     // Store the logged-in user's data in local storage
     // localStorage.setItem("loggedInUser", JSON.stringify(user));
     localStorage.setItem("isLoggedIn", "true");
+    console.log("dasxbasj");
 
     // Redirect to the main page
     window.location.href = "main.html";
