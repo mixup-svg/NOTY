@@ -151,7 +151,7 @@ body {
   display: block;
   text-align: start;
 }
-.note--description {
+.note-description {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -229,7 +229,7 @@ body {
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
   width: 65%;
-  height: 80%;
+  height: 100%;
 }
 .popup-content form {
   display: flex;
