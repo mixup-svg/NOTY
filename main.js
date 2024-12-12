@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupTemplate = `
     <div class="main-pop-up">
       <div class="pop-up">
-        <span class="close-popup" style="cursor: pointer; font-size: 20px;background-color:red; padding:10px;border-radius:50%;margin-bottom: 10px;font-weight:900;display:inline-flex;justify-content:center;"><ion-icon name="close-outline"></ion-icon></span>
+        <span class="close-popup" style="cursor: pointer; font-size: 20px;background-color:pink; padding:10px;border-radius:50%;margin-bottom: 10px;font-weight:900;display:inline-flex;justify-content:center;"><ion-icon name="close-outline"></ion-icon></span>
         <form>
           <label for="note-title">Title:</label>
           <input type="text" id="note-title" placeholder="Enter title" />
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <input type="date" class="pop-up-date" id="note-date" />
           <div style="display: flex; justify-content: space-between; gap: 10px;">
             <button type="button" class="submit-note">Save</button>
-            <button type="button" class="delete-note" style="cursor:pointer; background-color:red;border-radius: 10px;color:white;padding:10px; display: none;">Delete</button>
+            <button type="button" class="delete-note" style="cursor:pointer; background-color:pink;border-radius: 10px;border:none;color:white;padding:10px; display: none;">Delete</button>
           </div>
         </form>
       </div>
@@ -44,8 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeIcon = document.querySelector(".menu-close-icon");
   const header = document.querySelector(".main-header");
   const logOut = document.querySelector(".logout-btn");
+  const filterByAlphabets = document.querySelector(".filter-search-alpha");
+  const filterBydate = document.querySelector(".filter-search-date");
   let editingNote = null;
   let isPopupOpen = false; // Track if the popup is currently open
+  let isAlphaAsc = true; // Track if alphabetical sort is ascending
+  let isDateAsc = true; // Track if date sort is ascending
 
   // Load notes from localStorage
   const loadNotes = () => {
@@ -212,6 +216,37 @@ document.addEventListener("DOMContentLoaded", () => {
         note.style.display = "none";
       }
     });
+  });
+
+  // Sort Notes Alphabetically
+  filterByAlphabets.addEventListener("click", () => {
+    const savedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+    console.log("sorting");
+    savedNotes.sort((a, b) => {
+      const titleA = a.title.toLowerCase();
+      const titleB = b.title.toLowerCase();
+      return isAlphaAsc
+        ? titleA.localeCompare(titleB)
+        : titleB.localeCompare(titleA);
+    });
+    isAlphaAsc = !isAlphaAsc; // Toggle sort order
+    localStorage.setItem("notes", JSON.stringify(savedNotes)); // Save sorted notes
+    loadNotes(); // Reload notes after sorting
+  });
+
+  // Sort Notes by Date
+  filterBydate.addEventListener("click", () => {
+    const savedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+    savedNotes.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return isDateAsc ? dateA - dateB : dateB - dateA;
+    });
+    isDateAsc = !isDateAsc; // Toggle sort order
+    localStorage.setItem("notes", JSON.stringify(savedNotes)); // Save sorted notes
+    console.log("sorting");
+
+    loadNotes(); // Reload notes after sorting
   });
 
   // Toggle Navigation Sidebar
