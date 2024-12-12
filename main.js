@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupTemplate = `
     <div class="main-pop-up">
       <div class="pop-up">
-        <span class="close-popup" style="cursor: pointer; font-size: 20px;background-color:red; padding:10px;border-radius:50%;margin-bottom: 10px;font-weight:900;display:inline-flex;justify-content:center; "><ion-icon name="close-outline"></ion-icon></span>
+        <span class="close-popup" style="cursor: pointer; font-size: 20px;background-color:red; padding:10px;border-radius:50%;margin-bottom: 10px;font-weight:900;display:inline-flex;justify-content:center;"><ion-icon name="close-outline"></ion-icon></span>
         <form>
           <label for="note-title">Title:</label>
           <input type="text" id="note-title" placeholder="Enter title" />
@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".main-header");
   const logOut = document.querySelector(".logout-btn");
   let editingNote = null;
+  let isPopupOpen = false; // Track if the popup is currently open
 
   // Load notes from localStorage
   const loadNotes = () => {
@@ -86,6 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
     date = "",
     isEditing = false
   ) => {
+    if (isPopupOpen) return; // Prevent opening a new popup if one is already open
+
+    isPopupOpen = true; // Mark the popup as open
+
     const popupContainer = document.createElement("div");
     popupContainer.classList.add("popup-content");
     popupContainer.innerHTML = popupTemplate;
@@ -107,11 +112,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const closePopup = () => {
       popupContainer.remove();
+      isPopupOpen = false; // Reset popup state
       editingNote = null;
     };
 
     // Close popup on click
     closeButton.addEventListener("click", closePopup);
+
+    // Close popup on Escape key
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closePopup();
+    });
 
     // Save button functionality
     const saveNote = () => {
@@ -132,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         const newNote = document.createElement("button");
         newNote.classList.add("page", "show-notes");
-        newNote.innerHTML = `
+        newNote.innerHTML = ` 
           <h2 class="note-title">${newTitle}</h2>
           <p class="note-description">${newDescription}</p>
           <p class="note-date">${newDate}</p>
@@ -148,16 +159,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         notesContainer.appendChild(newNote);
       }
-      saveNotesToLocalStorage();
+      saveNotesToLocalStorage(); // Save notes to localStorage
       closePopup();
     };
 
+    // Attach save functionality to save button
     saveButton.addEventListener("click", saveNote);
 
+    // Save note and close popup on Enter key
+    popupContainer.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        saveNote();
+      }
+    });
+
+    // Delete button functionality
     deleteButton.addEventListener("click", () => {
       if (editingNote) {
         editingNote.remove();
-        saveNotesToLocalStorage();
+        saveNotesToLocalStorage(); // Save updated notes to localStorage
       }
       closePopup();
     });
