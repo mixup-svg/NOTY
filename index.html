@@ -21,6 +21,10 @@
       nomodule
       src="../NOTY-notpad-main-page/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg"
     ></script>
+
+    <!-- Add Google API Script -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
     <title>📝NOTY Login📝</title>
   </head>
   <body>
@@ -47,7 +51,6 @@
               </div>
               <div class="password-input">
                 <label for="password">Password</label>
-
                 <div class="pass-icon">
                   <input
                     id="password"
@@ -73,11 +76,9 @@
                 <button class="btn-login" aria-label="Log in to your account">
                   Login
                 </button>
-                <a
-                  class="check-box-text"
-                  href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmyaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dgo-to-account-button%26gar%3DWzEzMywiMjM2NzM2Il0%26sl%3Dtrue&ifkv=AeZLP99eI-3VY0pmYBDP10je4tnlW_M6h-4bO59bS0teYdjYXLx7c6PfjhaNh-wp_Yq40oiTauMuqA&service=accountsettings&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S908174670%3A1734091841846010&ddm=1"
-                  >Link with Google</a
-                >
+                <button class="btn-google google-login">
+                  Sign in with Google
+                </button>
               </div>
             </div>
           </div>

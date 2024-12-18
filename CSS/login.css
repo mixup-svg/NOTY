@@ -130,13 +130,15 @@ body {
 }
 
 /* Forgot Password */
-.forgot-password a {
+.btn-google {
   color: #509dfd;
   text-decoration: none;
   font-size: 1rem;
+  background-color: transparent;
+  border: none;
 }
 
-.forgot-password a:hover {
+.btn-google:hover {
   text-decoration: underline;
 }
 

@@ -32,11 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Step 3: Login button functionality
   const loginHandler = () => {
-    // Get input values
     const usernameInput = document.getElementById("name").value.trim();
     const passwordInputValue = passwordInput.value.trim();
 
-    // Check if the entered credentials match any stored credentials
     const user = credentials.find(
       (cred) =>
         cred.username === usernameInput && cred.password === passwordInputValue
@@ -49,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // Redirect to the main page
       window.location.href = "main.html";
     } else {
-      // Show an error message if credentials don't match
       alert("Invalid username or password. Please try again.");
     }
   };
@@ -63,4 +60,29 @@ document.addEventListener("DOMContentLoaded", () => {
       loginHandler();
     }
   });
+
+  // Step 5: Google Sign-In functionality
+  const googleLoginHandler = (response) => {
+    if (response.credential) {
+      // Successful Google login
+      localStorage.setItem("isLoggedIn", "true");
+      window.location.href = "main.html";
+    } else {
+      alert("Google login failed!");
+    }
+  };
+
+  const handleGoogleSignIn = () => {
+    window.google.accounts.id.initialize({
+      client_id: "YOUR_GOOGLE_CLIENT_ID", // Replace with your actual Google Client ID
+      callback: googleLoginHandler,
+    });
+
+    window.google.accounts.id.prompt(); // Automatically triggers the Google sign-in popup
+  };
+
+  // Attach event listener to Google Sign-In button
+  document
+    .querySelector(".btn-google")
+    .addEventListener("click", handleGoogleSignIn);
 });
