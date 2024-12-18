@@ -74,7 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const handleGoogleSignIn = () => {
     window.google.accounts.id.initialize({
-      client_id: "YOUR_GOOGLE_CLIENT_ID", // Replace with your actual Google Client ID
+      client_id:
+        "699449160304-55i05e502gi1dganrq17vgkolg2p84i9.apps.googleusercontent.com", // Replace with your actual Google Client ID
       callback: googleLoginHandler,
     });
 
@@ -83,6 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Attach event listener to Google Sign-In button
   document
-    .querySelector(".btn-google")
+    .querySelector(".google-login")
     .addEventListener("click", handleGoogleSignIn);
 });
