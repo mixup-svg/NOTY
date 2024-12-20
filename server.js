@@ -6,8 +6,13 @@ const { OAuth2Client } = require("google-auth-library");
 const app = express();
 const port = 8080;
 
-// Enable CORS for all origins
-app.use(cors());
+// Enable CORS for all origins (restrict to your frontend domain for security in production)
+const corsOptions = {
+  origin: "https://noty-notepad.netlify.app", // Allow requests only from the frontend domain
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+};
+app.use(cors(corsOptions));
 
 // Middleware to parse incoming JSON requests
 app.use(bodyParser.json());

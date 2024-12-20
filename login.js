@@ -62,25 +62,25 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Google login initialization
-  window.onload = function () {
-    google.accounts.id.initialize({
-      client_id:
-        "179042163928-r2mfbq4iik602htjv7tbk35m5lrc1m5m.apps.googleusercontent.com", // Your Google client ID
-      callback: googleLoginHandler, // Callback function after login
-    });
+  google.accounts.id.initialize({
+    client_id:
+      "179042163928-r2mfbq4iik602htjv7tbk35m5lrc1m5m.apps.googleusercontent.com", // Your Google client ID
+    callback: googleLoginHandler, // Callback function after login
+  });
 
-    google.accounts.id.prompt(); // Automatically triggers the Google login prompt
-  };
+  // Automatically triggers the Google login prompt
+  google.accounts.id.prompt();
 
   // Callback function to handle the Google login response
   function googleLoginHandler(response) {
-    console.log(response); // Add this to check if the credential is being returned correctly
+    console.log(response); // Check if the credential is returned correctly
 
     if (response.credential) {
       const idToken = response.credential;
 
       // Send the ID token to your backend for verification
-      fetch("https://noty-notepad.netlify.app/verify-token", {
+      fetch("http://127.0.0.1:8080/verify-token", {
+        // Use the correct deployed backend URL here
         method: "POST",
         headers: {
           "Content-Type": "application/json",
