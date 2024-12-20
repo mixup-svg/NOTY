@@ -63,6 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Step 5: Google Sign-In functionality
   const googleLoginHandler = (response) => {
+    console.log(response, "RES");
+
     if (response.credential) {
       // Successful Google login
       localStorage.setItem("isLoggedIn", "true");
@@ -75,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const handleGoogleSignIn = () => {
     window.google.accounts.id.initialize({
       client_id:
-        "699449160304-55i05e502gi1dganrq17vgkolg2p84i9.apps.googleusercontent.com", // Replace with your actual Google Client ID
+        "179042163928-d93koiu72q0i8q8psj6rkh0g5cb61qa8.apps.googleusercontent.com", // Replace with your actual Google Client ID
       callback: googleLoginHandler,
     });
 
