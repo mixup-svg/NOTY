@@ -6,8 +6,27 @@ const { OAuth2Client } = require("google-auth-library");
 const app = express();
 const port = 8080;
 
-// Enable CORS for all origins
-app.use(cors());
+// Define the allowed origin
+const allowedOrigin = "https://noty-notepad.netlify.app";
+
+// Enable CORS with specific configuration
+app.use(
+  cors({
+    origin: allowedOrigin, // Allow only your Netlify app
+    methods: ["GET", "POST", "OPTIONS"], // Specify allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+    credentials: true, // Allow credentials (cookies, authorization headers)
+  })
+);
+
+// Middleware to handle preflight requests (OPTIONS)
+app.options("*", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.sendStatus(200);
+});
 
 // Middleware to parse incoming JSON requests
 app.use(bodyParser.json());
