@@ -20,17 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const eyeIcon = document.querySelector(".eye-icon");
   const passwordInput = document.getElementById("password");
 
-  if (eyeIcon && passwordInput) {
-    eyeIcon.addEventListener("click", function () {
-      const isPasswordVisible = passwordInput.type === "text";
+  eyeIcon.addEventListener("click", function () {
+    const isPasswordVisible = passwordInput.type === "text";
 
-      // Toggle input type
-      passwordInput.type = isPasswordVisible ? "password" : "text";
+    // Toggle input type
+    passwordInput.type = isPasswordVisible ? "password" : "text";
 
-      // Toggle eye icon
-      eyeIcon.name = isPasswordVisible ? "eye-outline" : "eye-off-outline";
-    });
-  }
+    // Toggle eye icon
+    eyeIcon.name = isPasswordVisible ? "eye-outline" : "eye-off-outline";
+  });
 
   // Step 3: Login button functionality
   const loginHandler = () => {
@@ -54,10 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Add event listener for the login button
-  const loginButton = document.querySelector(".btn-login");
-  if (loginButton) {
-    loginButton.addEventListener("click", loginHandler);
-  }
+  document.querySelector(".btn-login").addEventListener("click", loginHandler);
 
   // Step 4: Keydown event for Enter key
   document.addEventListener("keydown", function (event) {
@@ -79,41 +74,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Callback function to handle the Google login response
   function googleLoginHandler(response) {
-    console.log("Google login response:", response); // Check if the credential is being returned correctly
+    console.log(response); // Add this to check if the credential is being returned correctly
 
     if (response.credential) {
       const idToken = response.credential;
 
       // Send the ID token to your backend for verification
-      fetch("https://noty-notepad.netlify.app/verify-token", {
+      fetch("http://127.0.0.1:8080/verify-token", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ idToken: idToken }),
       })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to verify token");
-          }
-          return response.json();
-        })
+        .then((response) => response.json())
         .then((data) => {
-          console.log("Token verification response:", data);
-
           if (data.message === "Token verified successfully!") {
             localStorage.setItem("isLoggedIn", "true");
             window.location.href = "main.html"; // Redirect to the main page
           } else {
-            alert("Google login failed: " + data.message);
+            alert("Google login failed!");
           }
         })
         .catch((error) => {
           console.error("Error during token verification:", error);
-          alert("Error verifying Google login. Please try again later.");
+          alert("Error verifying Google login.");
         });
     } else {
-      alert("Google login failed! No credential provided.");
+      alert("Google login failed!");
     }
   }
 });
