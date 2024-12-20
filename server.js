@@ -8,7 +8,7 @@ const port = 8080;
 
 // Enable CORS for all origins (restrict to your frontend domain for security in production)
 const corsOptions = {
-  origin: "https://noty-notepad.netlify.app", // Allow requests only from the frontend domain
+  origin: "https://noty-notepad.netlify.app", // Only allow this origin
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
 };
