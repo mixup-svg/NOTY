@@ -86,6 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Attach event listener to Google Sign-In button
   document
-    .querySelector(".google-login")
+    .querySelector(".btn-google")
     .addEventListener("click", handleGoogleSignIn);
 });
