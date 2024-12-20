@@ -61,29 +61,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Step 5: Google Sign-In functionality
-  const googleLoginHandler = (response) => {
+  // Google login initialization
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id:
+        "179042163928-d93koiu72q0i8q8psj6rkh0g5cb61qa8.apps.googleusercontent.com", // Your Google client ID
+      callback: googleLoginHandler, // Callback function after login
+    });
+
+    google.accounts.id.prompt(); // Automatically triggers the Google login prompt
+  };
+
+  // Callback function to handle the Google login response
+  function googleLoginHandler(response) {
+    console.log(response); // Add this to check if the credential is being returned correctly
+
     if (response.credential) {
-      // Successful Google login
-      localStorage.setItem("isLoggedIn", "true");
-      window.location.href = "main.html";
+      const idToken = response.credential;
+
+      // Send the ID token to your backend for verification
+      fetch("http://127.0.0.1:8080/verify-token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ idToken: idToken }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message === "Token verified successfully!") {
+            localStorage.setItem("isLoggedIn", "true");
+            window.location.href = "main.html"; // Redirect to the main page
+          } else {
+            alert("Google login failed!");
+          }
+        })
+        .catch((error) => {
+          console.error("Error during token verification:", error);
+          alert("Error verifying Google login.");
+        });
     } else {
       alert("Google login failed!");
     }
-  };
-
-  const handleGoogleSignIn = () => {
-    window.google.accounts.id.initialize({
-      client_id:
-        "699449160304-55i05e502gi1dganrq17vgkolg2p84i9.apps.googleusercontent.com", // Replace with your actual Google Client ID
-      callback: googleLoginHandler,
-    });
-
-    window.google.accounts.id.prompt(); // Automatically triggers the Google sign-in popup
-  };
-
-  // Attach event listener to Google Sign-In button
-  document
-    .querySelector(".google-login")
-    .addEventListener("click", handleGoogleSignIn);
+  }
 });
