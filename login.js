@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.onload = function () {
     google.accounts.id.initialize({
       client_id:
-        "179042163928-d93koiu72q0i8q8psj6rkh0g5cb61qa8.apps.googleusercontent.com", // Your Google client ID
+        "179042163928-r2mfbq4iik602htjv7tbk35m5lrc1m5m.apps.googleusercontent.com", // Your Google client ID
       callback: googleLoginHandler, // Callback function after login
     });
 
